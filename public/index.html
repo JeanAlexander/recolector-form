@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulario de Contacto</title>
-  <style>
-    body { font-family: Arial; background: #f0f4f8; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    form { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
-    input, textarea { width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-    button { background: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
-    button:hover { background: #0056b3; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Encuesta de Satisfacción</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <form id="formulario">
-    <h2>Contáctanos</h2>
-    <input type="text" id="nombre" placeholder="Nombre" required>
-    <input type="email" id="correo" placeholder="Correo electrónico" required>
-    <textarea id="mensaje" placeholder="Tu mensaje..." required></textarea>
+  <h1>Encuesta de Satisfacción</h1>
+
+  <form id="form-encuesta">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required>
+
+    <label>Edad:</label>
+    <input type="number" name="edad" required>
+
+    <label>¿Qué tan satisfecho estás con nuestro servicio?</label>
+    <select name="satisfaccion" required>
+      <option value="">Seleccione...</option>
+      <option>Muy satisfecho</option>
+      <option>Satisfecho</option>
+      <option>Neutral</option>
+      <option>Insatisfecho</option>
+      <option>Muy insatisfecho</option>
+    </select>
+
+    <label>¿Con qué frecuencia usas nuestro servicio?</label>
+    <select name="frecuencia" required>
+      <option value="">Seleccione...</option>
+      <option>Diariamente</option>
+      <option>Semanalmente</option>
+      <option>Mensualmente</option>
+      <option>Rara vez</option>
+    </select>
+
+    <label>¿Recomendarías nuestro servicio?</label>
+    <select name="recomendacion" required>
+      <option value="">Seleccione...</option>
+      <option>Sí</option>
+      <option>No</option>
+    </select>
+
+    <label>Comentarios adicionales:</label>
+    <textarea name="comentarios"></textarea>
+
     <button type="submit">Enviar</button>
   </form>
 
-  <script>
-    document.getElementById("formulario").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = {
-        nombre: document.getElementById("nombre").value,
-        correo: document.getElementById("correo").value,
-        mensaje: document.getElementById("mensaje").value
-      };
+  <p id="mensaje"></p>
 
-      const response = await fetch("/api/form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      const result = await response.json();
-      alert(result.mensaje);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
