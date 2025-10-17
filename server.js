@@ -1,31 +1,35 @@
-// server.js
 import express from "express";
 import cors from "cors";
-import fs from "fs";
+import fetch from "node-fetch";
 
 const app = express();
-const PORT = 3000;
-
-// Middleware
 app.use(cors());
 app.use(express.json());
-
-// Endpoint que recibe los datos
-app.post("/api/form", (req, res) => {
-  const { nombre, correo, mensaje } = req.body;
-  console.log("Datos recibidos:", nombre, correo, mensaje);
-
-  // Guarda los datos en un archivo local
-  const linea = `${nombre}, ${correo}, ${mensaje}\n`;
-  fs.appendFileSync("datos.txt", linea);
-
-  res.json({ ok: true, mensaje: "Datos guardados correctamente ✅" });
-});
-
-// Servir el frontend
 app.use(express.static("public"));
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+// === Cambia esta URL por la de tu Google Apps Script ===
+const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbypjxauXnTfKnfNvq3rEhN-umWQ0h5mBdZx5etdqBXmsNaTtGTT6t5BxFMrui44wgjF0w/exec";
+
+app.post("/enviar", async (req, res) => {
+  try {
+    const data = req.body;
+
+    // Reenviar a Google Sheets
+    const response = await fetch(GOOGLE_SHEET_WEBAPP_URL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const text = await response.text();
+    console.log("Datos enviados a Google Sheets:", data);
+
+    res.status(200).send("✅ Respuesta enviada correctamente a Google Sheets");
+  } catch (error) {
+    console.error("Error al enviar datos:", error);
+    res.status(500).send("❌ Error al enviar datos");
+  }
 });
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor funcionando en puerto ${PORT}`));
