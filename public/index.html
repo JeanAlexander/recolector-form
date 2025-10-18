@@ -2,43 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Encuesta de Opinión</title>
+  <title>Encuesta sobre Uso del Teclado WASD</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Encuesta de Opinión</h1>
-  <form id="formEncuesta">
-    <label>Nombre:</label>
-    <input type="text" id="nombre" required><br>
+  <div class="container">
+    <h1>🖐️ Encuesta: Uso del Teclado WASD</h1>
+    <p class="subtitle">Ayúdanos a entender cómo usas tus manos al controlar con el teclado.</p>
 
-    <label>Edad:</label>
-    <input type="number" id="edad" required><br>
+    <form id="formEncuesta">
+      <label>Nombre:</label>
+      <input type="text" id="nombre" required><br>
 
-    <p>1️⃣ ¿Te gustó la experiencia en la web?</p>
-    <input type="radio" name="pregunta1" value="Sí"> Sí
-    <input type="radio" name="pregunta1" value="No"> No
+      <label>Edad:</label>
+      <input type="number" id="edad" required><br>
 
-    <p>2️⃣ ¿Recomendarías este sitio a otros?</p>
-    <input type="radio" name="pregunta2" value="Sí"> Sí
-    <input type="radio" name="pregunta2" value="No"> No
+      <p>1️⃣ ¿Qué mano usas principalmente para moverte (teclas WASD)?</p>
+      <input type="radio" name="pregunta1" value="Mano izquierda"> Mano izquierda
+      <input type="radio" name="pregunta1" value="Mano derecha"> Mano derecha
+      <input type="radio" name="pregunta1" value="Ambas"> Ambas
 
-    <p>3️⃣ ¿Qué tan fácil fue usar la web?</p>
-    <input type="radio" name="pregunta3" value="Fácil"> Fácil
-    <input type="radio" name="pregunta3" value="Difícil"> Difícil
+      <p>2️⃣ ¿Qué tan rápido crees que reaccionas con la mano WASD? (1–10)</p>
+      <input type="range" id="pregunta2" min="1" max="10" value="5">
 
-    <p>4️⃣ ¿Qué mejorarías?</p>
-    <input type="text" id="pregunta4">
+      <p>3️⃣ ¿Qué dedo usas más para la tecla “W”?</p>
+      <input type="radio" name="pregunta3" value="Índice"> Índice
+      <input type="radio" name="pregunta3" value="Medio"> Medio
+      <input type="radio" name="pregunta3" value="Anular"> Anular
+      <input type="radio" name="pregunta3" value="Otro"> Otro
 
-    <p>5️⃣ ¿Te gustaría más funciones?</p>
-    <input type="radio" name="pregunta5" value="Sí"> Sí
-    <input type="radio" name="pregunta5" value="No"> No
+      <p>4️⃣ ¿Usas el pulgar para la barra espaciadora o para otra tecla?</p>
+      <input type="text" id="pregunta4" placeholder="Ejemplo: espacio, shift, control...">
 
-    <p>6️⃣ Califica esta web (1–5):</p>
-    <input type="number" id="pregunta6" min="1" max="5">
+      <p>5️⃣ ¿Qué tanto te consideras preciso al usar WASD?</p>
+      <input type="radio" name="pregunta5" value="Muy preciso"> Muy preciso
+      <input type="radio" name="pregunta5" value="Preciso"> Preciso
+      <input type="radio" name="pregunta5" value="Regular"> Regular
+      <input type="radio" name="pregunta5" value="Necesito mejorar"> Necesito mejorar
 
-    <br><br>
-    <button type="submit">Enviar</button>
-  </form>
+      <p>6️⃣ ¿Qué aplicación te gustaría controlar con WASD?</p>
+      <input type="text" id="pregunta6" placeholder="Ejemplo: juegos, drones, robots...">
+
+      <br><br>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
 
   <script src="script.js"></script>
 </body>

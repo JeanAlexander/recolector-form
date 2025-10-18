@@ -7,7 +7,7 @@ document.getElementById("formEncuesta").addEventListener("submit", async (e) => 
     nombre: document.getElementById("nombre").value,
     edad: document.getElementById("edad").value,
     pregunta1: document.querySelector('input[name="pregunta1"]:checked')?.value || "",
-    pregunta2: document.querySelector('input[name="pregunta2"]:checked')?.value || "",
+    pregunta2: document.getElementById("pregunta2").value,
     pregunta3: document.querySelector('input[name="pregunta3"]:checked')?.value || "",
     pregunta4: document.getElementById("pregunta4").value,
     pregunta5: document.querySelector('input[name="pregunta5"]:checked')?.value || "",

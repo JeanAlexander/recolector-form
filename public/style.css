@@ -1,28 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
-  background: #f8f9fa;
-  color: #333;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at center, #0a0f1a, #000);
+  color: #d7f3ff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background: rgba(10, 20, 40, 0.95);
   padding: 30px;
+  border-radius: 20px;
+  width: 90%;
   max-width: 600px;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 30px rgba(0, 150, 255, 0.6);
+  border: 1px solid #0ff;
 }
 
 h1 {
   text-align: center;
-  color: #0066cc;
+  color: #7df9ff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9em;
+  color: #9adfff;
+  margin-bottom: 25px;
+}
+
+label, p {
+  display: block;
+  margin-bottom: 6px;
+  color: #c9eaff;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="range"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a2333;
+  color: #c9eaff;
+  outline: none;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  accent-color: #00ccff;
+  margin-right: 5px;
+}
+
+input[type="range"] {
+  accent-color: #00ccff;
 }
 
 button {
-  background: #0066cc;
-  color: white;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #0077ff, #00ccff);
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  color: white;
+  font-size: 1em;
+  border-radius: 10px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  background: #004c99;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00bfff;
 }
