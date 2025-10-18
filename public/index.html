@@ -2,52 +2,54 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Encuesta sobre Uso del Teclado WASD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waspend Code | Proyecto WASD Control</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>🖐️ Encuesta: Uso del Teclado WASD</h1>
-    <p class="subtitle">Ayúdanos a entender cómo usas tus manos al controlar con el teclado.</p>
+  <canvas id="particles-bg"></canvas>
+  <header class="header">
+    <h1 class="logo"><span>Waspend</span> Code</h1>
+    <nav>
+      <a href="index.html" class="active">Inicio</a>
+      <a href="encuesta.html">Encuesta</a>
+    </nav>
+  </header>
 
-    <form id="formEncuesta">
-      <label>Nombre:</label>
-      <input type="text" id="nombre" required><br>
+  <!-- Fondo animado -->
+  <div class="background-anim"></div>
 
-      <label>Edad:</label>
-      <input type="number" id="edad" required><br>
+  <section class="hero">
+    <div class="hero-content animate-fadein">
+      <h2>Proyecto <span class="highlight">WASD Control</span></h2>
+      <p>
+        Este proyecto busca analizar la forma en que los usuarios emplean las teclas <strong>WASD</strong> 
+        para diseñar sistemas de control más naturales y precisos aplicados a videojuegos, robots y simuladores.
+      </p>
+      <a href="encuesta.html" class="btn-primary glow">Participar en la Encuesta</a>
+    </div>
+  </section>
 
-      <p>1️⃣ ¿Qué mano usas principalmente para moverte (teclas WASD)?</p>
-      <input type="radio" name="pregunta1" value="Mano izquierda"> Mano izquierda
-      <input type="radio" name="pregunta1" value="Mano derecha"> Mano derecha
-      <input type="radio" name="pregunta1" value="Ambas"> Ambas
+  <section class="info animate-slideup">
+    <h3>🎯 Objetivos del Proyecto</h3>
+    <ul>
+      <li>Analizar la coordinación y precisión al usar las teclas WASD.</li>
+      <li>Evaluar qué mano y dedos son predominantes en los movimientos de control.</li>
+      <li>Proyectar un sistema de control inteligente basado en la ergonomía del usuario.</li>
+    </ul>
 
-      <p>2️⃣ ¿Qué tan rápido crees que reaccionas con la mano WASD? (1–10)</p>
-      <input type="range" id="pregunta2" min="1" max="10" value="5">
+    <h3>⚙️ Finalidad</h3>
+    <p>
+      Con los resultados de esta encuesta, se pretende optimizar la interacción entre usuario y máquina,
+      permitiendo diseñar controladores personalizados, eficientes y adaptados a las habilidades de cada persona.
+    </p>
+  </section>
 
-      <p>3️⃣ ¿Qué dedo usas más para la tecla “W”?</p>
-      <input type="radio" name="pregunta3" value="Índice"> Índice
-      <input type="radio" name="pregunta3" value="Medio"> Medio
-      <input type="radio" name="pregunta3" value="Anular"> Anular
-      <input type="radio" name="pregunta3" value="Otro"> Otro
-
-      <p>4️⃣ ¿Usas el pulgar para la barra espaciadora o para otra tecla?</p>
-      <input type="text" id="pregunta4" placeholder="Ejemplo: espacio, shift, control...">
-
-      <p>5️⃣ ¿Qué tanto te consideras preciso al usar WASD?</p>
-      <input type="radio" name="pregunta5" value="Muy preciso"> Muy preciso
-      <input type="radio" name="pregunta5" value="Preciso"> Preciso
-      <input type="radio" name="pregunta5" value="Regular"> Regular
-      <input type="radio" name="pregunta5" value="Necesito mejorar"> Necesito mejorar
-
-      <p>6️⃣ ¿Qué aplicación te gustaría controlar con WASD?</p>
-      <input type="text" id="pregunta6" placeholder="Ejemplo: juegos, drones, robots...">
-
-      <br><br>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-
+  <footer>
+    <p>© 2025 Waspend Code — Innovación y Control Inteligente</p>
+  </footer>
   <script src="script.js"></script>
+
 </body>
 </html>
