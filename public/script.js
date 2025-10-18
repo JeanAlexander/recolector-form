@@ -4,6 +4,7 @@
 const url = "https://script.google.com/macros/s/AKfycbz_PFtlBxVwqMFdFEbkTfxV8pWVcSyA3LQ3aWVdMQKhuvMkBTYm3The2TeHPFjGXP5nkg/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // ======================
   // Fondo de partículas
   // ======================
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
-  // Crear partículas
   for (let i = 0; i < numParticles; i++) {
     particles.push({
       x: Math.random() * canvas.width,
@@ -34,14 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Mouse interactivo
   const mouse = { x: null, y: null };
   window.addEventListener("mousemove", e => {
     mouse.x = e.x;
     mouse.y = e.y;
   });
 
-  // Animar partículas
   function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "rgba(255,255,255,0.8)";
@@ -49,16 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let p of particles) {
       p.x += p.vx;
       p.y += p.vy;
-
       if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
       if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-      // Dibujar partículas
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fill();
 
-      // Conexiones
       for (let q of particles) {
         const dx = p.x - q.x;
         const dy = p.y - q.y;
@@ -73,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Atracción al mouse
       if (mouse.x && mouse.y) {
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
@@ -88,12 +82,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animateParticles();
 
-  // Ajustar posición z-index
   canvas.style.position = "fixed";
   canvas.style.top = "0";
   canvas.style.left = "0";
   canvas.style.zIndex = "-2";
   canvas.style.opacity = "0.4";
+
+  // ======================
+  // Pantalla de carga
+  // ======================
+  const loader = document.createElement("div");
+  loader.id = "loading-screen";
+  loader.innerHTML = `
+    <div class="loader-box">
+      <h2>🚀 Waspend Code</h2>
+      <p>Enviando tus respuestas...</p>
+      <div class="spinner"></div>
+    </div>`;
+  document.body.appendChild(loader);
+  loader.style.display = "none";
 
   // ======================
   // Envío de formulario
@@ -102,6 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      const boton = document.querySelector(".btn-enviar");
+      boton.disabled = true;
+      boton.textContent = "Enviando...";
+      boton.classList.add("loading");
+
+      loader.style.display = "flex";
 
       const datos = {
         nombre: document.getElementById("nombre").value,
@@ -121,13 +135,33 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         if (res.ok) {
-          alert("✅ Respuestas enviadas correctamente. ¡Gracias por participar!");
+          boton.textContent = "✅ Enviado con éxito";
+          boton.classList.remove("loading");
+          boton.classList.add("success");
+
           e.target.reset();
+
+          setTimeout(() => {
+            loader.style.display = "none";
+            window.location.href = "index.html";
+          }, 2500);
+
         } else {
-          alert("❌ Error al enviar los datos. Intenta nuevamente.");
+          throw new Error("Error en el envío");
         }
+
       } catch (error) {
-        alert("⚠️ Error de conexión con el servidor.");
+        loader.style.display = "none";
+        boton.textContent = "⚠️ Error, reintenta";
+        boton.classList.remove("loading");
+        boton.classList.add("error");
+
+        setTimeout(() => {
+          boton.disabled = false;
+          boton.textContent = "Reintentar envío";
+          boton.classList.remove("error");
+        }, 3000);
+
         console.error(error);
       }
     });
