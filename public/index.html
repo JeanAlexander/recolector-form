@@ -2,52 +2,43 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Encuesta de Satisfacción</title>
+  <title>Encuesta de Opinión</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Encuesta de Satisfacción</h1>
-
-  <form id="form-encuesta">
+  <h1>Encuesta de Opinión</h1>
+  <form id="formEncuesta">
     <label>Nombre:</label>
-    <input type="text" name="nombre" required>
+    <input type="text" id="nombre" required><br>
 
     <label>Edad:</label>
-    <input type="number" name="edad" required>
+    <input type="number" id="edad" required><br>
 
-    <label>¿Qué tan satisfecho estás con nuestro servicio?</label>
-    <select name="satisfaccion" required>
-      <option value="">Seleccione...</option>
-      <option>Muy satisfecho</option>
-      <option>Satisfecho</option>
-      <option>Neutral</option>
-      <option>Insatisfecho</option>
-      <option>Muy insatisfecho</option>
-    </select>
+    <p>1️⃣ ¿Te gustó la experiencia en la web?</p>
+    <input type="radio" name="pregunta1" value="Sí"> Sí
+    <input type="radio" name="pregunta1" value="No"> No
 
-    <label>¿Con qué frecuencia usas nuestro servicio?</label>
-    <select name="frecuencia" required>
-      <option value="">Seleccione...</option>
-      <option>Diariamente</option>
-      <option>Semanalmente</option>
-      <option>Mensualmente</option>
-      <option>Rara vez</option>
-    </select>
+    <p>2️⃣ ¿Recomendarías este sitio a otros?</p>
+    <input type="radio" name="pregunta2" value="Sí"> Sí
+    <input type="radio" name="pregunta2" value="No"> No
 
-    <label>¿Recomendarías nuestro servicio?</label>
-    <select name="recomendacion" required>
-      <option value="">Seleccione...</option>
-      <option>Sí</option>
-      <option>No</option>
-    </select>
+    <p>3️⃣ ¿Qué tan fácil fue usar la web?</p>
+    <input type="radio" name="pregunta3" value="Fácil"> Fácil
+    <input type="radio" name="pregunta3" value="Difícil"> Difícil
 
-    <label>Comentarios adicionales:</label>
-    <textarea name="comentarios"></textarea>
+    <p>4️⃣ ¿Qué mejorarías?</p>
+    <input type="text" id="pregunta4">
 
+    <p>5️⃣ ¿Te gustaría más funciones?</p>
+    <input type="radio" name="pregunta5" value="Sí"> Sí
+    <input type="radio" name="pregunta5" value="No"> No
+
+    <p>6️⃣ Califica esta web (1–5):</p>
+    <input type="number" id="pregunta6" min="1" max="5">
+
+    <br><br>
     <button type="submit">Enviar</button>
   </form>
-
-  <p id="mensaje"></p>
 
   <script src="script.js"></script>
 </body>
